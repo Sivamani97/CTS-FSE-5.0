@@ -1,0 +1,181 @@
+/* ============================================================
+   links-lists.css — Exercise 6
+   Demonstrates: :link :visited :hover :active pseudo-classes,
+   list-style-type, list-style-position, nav bullet removal,
+   padding/margin on list items
+   ============================================================ */
+
+/* ── LINK PSEUDO-CLASSES ── */
+
+a:link {
+  color: var(--clr-rust);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+
+a:visited {
+  color: #8b3d2d;
+}
+
+a:hover {
+  color: var(--clr-amber);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:active {
+  color: #c0462e;
+  text-decoration: none;
+}
+
+/* ── NAVIGATION ── */
+
+/* Nav list — bullets removed, horizontal flex */
+nav ul {
+  list-style-type: none;
+  list-style-position: inside;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li {
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a:link,
+nav ul li a:visited {
+  display: block;
+  color: var(--clr-cream);
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: background var(--ease), color var(--ease);
+}
+
+nav ul li a:hover {
+  background: var(--clr-rust);
+  color: var(--clr-white);
+  text-decoration: none;
+}
+
+nav ul li a:active {
+  background: #9a3020;
+  color: var(--clr-white);
+}
+
+/* ── FOOTER LINKS ── */
+
+footer a:link,
+footer a:visited {
+  color: var(--clr-amber);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--clr-cream);
+  text-decoration: underline;
+}
+
+/* ── STYLED LISTS (e.g. feature bullets) ── */
+
+/* Unordered list with custom disc style */
+.list-styled {
+  list-style-type: disc;
+  list-style-position: outside;
+  padding-left: 1.4rem;
+  margin-bottom: var(--sp-md);
+}
+
+.list-styled li {
+  padding: 0.3rem 0;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--clr-slate);
+  line-height: 1.6;
+}
+
+/* Ordered list (e.g. how-to steps) */
+.list-numbered {
+  list-style-type: decimal;
+  list-style-position: outside;
+  padding-left: 1.4rem;
+}
+
+.list-numbered li {
+  padding: 0.35rem 0 0.35rem 0.4rem;
+  margin-bottom: 0.2rem;
+  font-size: 0.9rem;
+  color: var(--clr-slate);
+}
+
+/* Icon-prefixed list (custom list-style via ::before) */
+.list-check {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-check li {
+  padding: 0.3rem 0 0.3rem 1.6rem;
+  position: relative;
+  font-size: 0.9rem;
+  color: var(--clr-slate);
+}
+
+.list-check li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--clr-sage);
+  font-weight: 700;
+}
+
+/* ── CTA BUTTON (Exercise 2 example from PDF) ── */
+
+/* Style for main CTA button */
+.cta-button {
+  display: inline-block;
+  background-color: #c0462e;
+  color: white;
+  padding: 0.7rem 1.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--ease), transform var(--ease), box-shadow var(--ease);
+}
+
+.cta-button:hover {
+  background-color: #a83520;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192,70,46,0.35);
+  color: white;
+  text-decoration: none;
+}
+
+.cta-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.cta-button-outline {
+  background-color: transparent;
+  color: var(--clr-cream);
+  border: 2px solid rgba(246,241,233,0.35);
+}
+
+.cta-button-outline:hover {
+  border-color: var(--clr-amber);
+  color: var(--clr-amber);
+  background-color: transparent;
+  text-decoration: none;
+}

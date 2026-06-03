@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Local Community Event Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"/>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+  <div id="loader" class="loader-overlay">
+    <div class="loader-inner">
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+      <div class="loader-dot"></div>
+    </div>
+    <p class="loader-text">Loading Portal…</p>
+  </div>
+
+  <header class="site-header">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <div class="logo-block">
+        <span class="logo-icon">◈</span>
+        <div>
+          <h1 class="site-title">Community<br>Event Portal</h1>
+          <p class="site-subtitle">Salem & Surrounding Areas</p>
+        </div>
+      </div>
+      <nav class="header-nav">
+        <a href="#events" class="nav-link">Events</a>
+        <a href="#register" class="nav-link">Register</a>
+        <a href="#about" class="nav-link">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero-banner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Discover · Connect · Celebrate</p>
+      <h2 class="hero-heading">What's Happening<br>in Your Community</h2>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card"><span id="stat-total" class="stat-num">0</span><span class="stat-label">Events</span></div>
+      <div class="stat-card"><span id="stat-seats" class="stat-num">0</span><span class="stat-label">Seats Available</span></div>
+      <div class="stat-card"><span id="stat-cats" class="stat-num">0</span><span class="stat-label">Categories</span></div>
+    </div>
+  </section>
+
+  <main class="main-content">
+
+    <section id="events" class="events-section">
+      <div class="section-header">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div class="filter-bar">
+          <div class="search-wrap">
+            <span class="search-icon">⌕</span>
+            <input type="text" id="searchInput" placeholder="Search events…" class="search-input" />
+          </div>
+          <select id="categoryFilter" class="filter-select">
+            <option value="all">All Categories</option>
+            <option value="music">Music</option>
+            <option value="workshop">Workshop</option>
+            <option value="sports">Sports</option>
+            <option value="food">Food</option>
+            <option value="art">Art</option>
+            <option value="tech">Tech</option>
+          </select>
+          <select id="locationFilter" class="filter-select">
+            <option value="all">All Locations</option>
+            <option value="Salem">Salem</option>
+            <option value="Namakkal">Namakkal</option>
+            <option value="Erode">Erode</option>
+          </select>
+        </div>
+      </div>
+      <div id="eventGrid" class="event-grid"></div>
+      <p id="noEvents" class="no-events" style="display:none">No events match your search.</p>
+    </section>
+
+    <section id="register" class="register-section">
+      <div class="register-inner">
+        <div class="register-info">
+          <h2 class="section-title">Sign Up for an Event</h2>
+          <p class="register-desc">Join hundreds of community members. Fill in your details and pick an event to get started.</p>
+          <div id="registrationLog" class="reg-log"></div>
+        </div>
+        <form id="registrationForm" class="reg-form" novalidate>
+          <div class="form-group">
+            <label for="userName">Full Name</label>
+            <input type="text" id="userName" name="userName" placeholder="e.g. Priya Ramesh" autocomplete="off"/>
+            <span class="field-error" id="nameError"></span>
+          </div>
+          <div class="form-group">
+            <label for="userEmail">Email Address</label>
+            <input type="email" id="userEmail" name="userEmail" placeholder="you@example.com" autocomplete="off"/>
+            <span class="field-error" id="emailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="eventSelect">Choose Event</label>
+            <select id="eventSelect" name="eventSelect">
+              <option value="">— Select an event —</option>
+            </select>
+            <span class="field-error" id="eventError"></span>
+          </div>
+          <button type="submit" id="registerBtn" class="btn btn-primary">
+            <span class="btn-label">Register Now</span>
+            <span class="btn-icon">→</span>
+          </button>
+          <div id="formFeedback" class="form-feedback" style="display:none"></div>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="about" class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span class="footer-name">Community Event Portal</span>
+      </div>
+      <p class="footer-copy">© 2025 Salem Community Hub. All rights reserved.</p>
+      <p class="footer-tech">Built with Vanilla JS · jQuery · Fetch API</p>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>

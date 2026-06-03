@@ -1,0 +1,50 @@
+/* ============================================================
+   variables.css — Design Tokens
+   All reusable CSS custom properties for the portal
+   ============================================================ */
+
+:root {
+  /* Brand colours */
+  --clr-ink:        #12192b;
+  --clr-navy:       #1e2d4d;
+  --clr-cream:      #f6f1e9;
+  --clr-white:      #ffffff;
+  --clr-amber:      #e8a020;
+  --clr-rust:       #c0462e;
+  --clr-sage:       #4e7c59;
+  --clr-slate:      #5a6478;
+  --clr-light:      #edeae3;
+  --clr-border:     #d8d2c8;
+
+  /* RGBA usage examples — Exercise 4 */
+  --clr-overlay:    rgba(18, 25, 43, 0.72);
+  --clr-amber-soft: rgba(232, 160, 32, 0.15);
+  --clr-rust-soft:  rgba(192, 70, 46, 0.12);
+  --clr-sage-soft:  rgba(78, 124, 89, 0.12);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Jost', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  /* Spacing scale */
+  --sp-xs:  0.375rem;
+  --sp-sm:  0.75rem;
+  --sp-md:  1.25rem;
+  --sp-lg:  2rem;
+  --sp-xl:  3.5rem;
+  --sp-2xl: 5.5rem;
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(18,25,43,0.10);
+  --shadow-md: 0 4px 20px rgba(18,25,43,0.13);
+  --shadow-lg: 0 10px 40px rgba(18,25,43,0.18);
+
+  /* Transitions */
+  --ease: 0.22s ease;
+}

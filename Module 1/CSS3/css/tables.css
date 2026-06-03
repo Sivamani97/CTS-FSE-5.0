@@ -1,0 +1,124 @@
+/* ============================================================
+   tables.css — Exercise 7
+   Demonstrates: table/th/td borders, padding, background,
+   zebra striping with nth-child(even), border-collapse, text-align
+   ============================================================ */
+
+/* Wrapper for horizontal scroll on small screens */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* Main table */
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--clr-white);
+}
+
+/* Table caption */
+.events-table caption {
+  caption-side: top;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--clr-ink);
+  padding: var(--sp-md) var(--sp-md) var(--sp-sm);
+  border-bottom: 2px solid var(--clr-border);
+}
+
+/* Header row */
+.events-table thead tr {
+  background: var(--clr-navy);
+}
+
+.events-table th {
+  padding: 0.85rem 1rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--clr-amber);
+  border: 1px solid rgba(255,255,255,0.08);
+  white-space: nowrap;
+}
+
+/* Table data cells */
+.events-table td {
+  padding: 0.8rem 1rem;
+  text-align: center;
+  border: 1px solid var(--clr-border);
+  color: var(--clr-slate);
+  vertical-align: middle;
+}
+
+.events-table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: var(--clr-ink);
+}
+
+/* Zebra striping — nth-child(even) */
+.events-table tbody tr:nth-child(even) {
+  background-color: #f2ede4;
+}
+
+.events-table tbody tr:nth-child(odd) {
+  background-color: var(--clr-white);
+}
+
+/* Row hover effect */
+.events-table tbody tr:hover {
+  background-color: rgba(232, 160, 32, 0.1);
+  transition: background var(--ease);
+}
+
+/* Footer row */
+.events-table tfoot td {
+  background: var(--clr-light);
+  font-weight: 600;
+  color: var(--clr-ink);
+  font-size: 0.88rem;
+}
+
+/* Gallery table — image grid (Exercise 4 from HTML module) */
+.gallery-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 14px;
+}
+
+.gallery-table td {
+  width: 33.33%;
+  vertical-align: top;
+  text-align: center;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 185px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 3px solid var(--clr-white);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.gallery-img:hover {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-lg);
+}
+
+.gallery-caption {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--clr-slate);
+  margin-top: 0.4rem;
+}

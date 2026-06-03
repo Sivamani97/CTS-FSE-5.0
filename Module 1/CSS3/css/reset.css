@@ -1,0 +1,42 @@
+/* ============================================================
+   reset.css — Exercise 1 & 2
+   Universal selector reset + base element defaults
+   Demonstrates: inline vs internal vs external CSS concept,
+   CSS syntax, comments, consistent formatting
+   ============================================================ */
+
+/* Universal selector: zero out default browser spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Base document defaults */
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove default list style on nav menus (overridden in links-lists.css) */
+ul, ol {
+  list-style: none;
+}
+
+/* Images never overflow their containers */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit font in form controls */
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}

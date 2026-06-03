@@ -1,0 +1,97 @@
+/* ============================================================
+   selectors.css — Exercise 3
+   Demonstrates: universal, element, ID, class, grouping selectors
+   ============================================================ */
+
+/* Element selector: all h2 headings share this base style */
+h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--clr-ink);
+  line-height: 1.2;
+}
+
+/* Element selector: all h3 headings */
+h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--clr-navy);
+}
+
+/* Grouping selector: h3 and p share margin-bottom */
+h3, p {
+  margin-bottom: 0.65rem;
+}
+
+/* ID selector: the main hero banner */
+#mainHeader {
+  background: linear-gradient(135deg, var(--clr-ink) 0%, var(--clr-navy) 100%);
+  color: var(--clr-cream);
+  padding: var(--sp-2xl) var(--sp-lg);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+#mainHeader::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 40%, rgba(232,160,32,0.14) 0%, transparent 60%),
+    radial-gradient(ellipse at 15% 75%, rgba(192,70,46,0.11) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Class selector: every event card shares these base rules */
+.eventCard {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--ease), box-shadow var(--ease);
+}
+
+.eventCard:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Class selector: section wrapper */
+.section-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--sp-lg);
+}
+
+/* Class selector: section header block */
+.section-head {
+  margin-bottom: var(--sp-lg);
+}
+
+.section-head p {
+  color: var(--clr-slate);
+  font-size: 1rem;
+  margin-top: 0.35rem;
+}
+
+/* Accent divider line under headings */
+.divider-line {
+  width: 44px;
+  height: 3px;
+  background: var(--clr-rust);
+  border-radius: 2px;
+  margin: 0.5rem 0 0.75rem;
+}
+
+/* Utility: visually hidden (accessibility) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+}

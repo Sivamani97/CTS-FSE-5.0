@@ -1,0 +1,214 @@
+/* ============================================================
+   boxmodel.css — Exercise 8
+   Demonstrates: border, padding, margin on .eventCard,
+   outline on focused form fields, visibility:hidden vs display:none
+   ============================================================ */
+
+/* ── EVENT CARD BOX MODEL ── */
+
+.eventCard {
+  padding: 0;
+  margin-bottom: var(--sp-md);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+}
+
+.eventCard-top {
+  background: var(--clr-ink);
+  color: var(--clr-amber);
+  padding: 0.75rem 1.15rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.eventCard-body {
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+
+.eventCard-body h3 {
+  margin-bottom: 0.35rem;
+}
+
+.eventCard-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.65rem;
+  font-size: 0.82rem;
+  color: var(--clr-slate);
+}
+
+/* ── FORM BOX MODEL ── */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 1.1rem;
+}
+
+.form-group label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--clr-ink);
+  letter-spacing: 0.03em;
+}
+
+.form-group label .req { color: var(--clr-rust); margin-left: 2px; }
+
+/* Padding and border on inputs */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 0.65rem 0.9rem;
+  border: 1.5px solid var(--clr-border);
+  border-radius: var(--radius-sm);
+  background: var(--clr-cream);
+  color: var(--clr-ink);
+  outline: none;
+  transition: border-color var(--ease), box-shadow var(--ease);
+  margin: 0;
+}
+
+/* Outline on focused fields (Exercise 8) */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--clr-rust);
+  outline: 3px solid rgba(192,70,46,0.18);
+  outline-offset: 1px;
+}
+
+/* Validation states */
+.form-group input.is-valid   { border-color: #4e7c59; }
+.form-group input.is-invalid { border-color: var(--clr-rust); }
+
+.field-msg {
+  font-size: 0.78rem;
+  min-height: 1rem;
+  margin-top: 0.1rem;
+}
+
+.field-msg.error { color: var(--clr-rust); }
+.field-msg.ok    { color: var(--clr-sage); }
+
+/* ── VISIBILITY vs DISPLAY DEMO ── */
+
+/* visibility:hidden — element is hidden but still occupies space in layout */
+.hidden-visibility {
+  visibility: hidden;
+}
+
+/* display:none — element is completely removed from the layout flow */
+.hidden-display {
+  display: none;
+}
+
+/* Active toggle (JS adds this class to show the element) */
+.hidden-display.active {
+  display: block;
+}
+
+/* ── SECTION PADDING ── */
+
+.section {
+  padding: var(--sp-xl) 0;
+}
+
+/* ── GEO CARD ── */
+
+.geo-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg);
+  max-width: 540px;
+  margin: 0 auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.geo-result {
+  margin-top: var(--sp-md);
+  padding: 1rem;
+  background: var(--clr-cream);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  line-height: 1.9;
+  display: none;
+}
+
+.geo-result.active { display: block; }
+
+/* ── PREFERENCE CARD ── */
+
+.pref-card {
+  background: var(--clr-white);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-lg);
+  max-width: 480px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ── FEEDBACK OUTPUT ── */
+
+.form-output {
+  display: none;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: var(--sp-sm);
+  border: 1px solid;
+}
+
+.form-output.success {
+  display: block;
+  background: rgba(78,124,89,0.1);
+  border-color: rgba(78,124,89,0.3);
+  color: var(--clr-sage);
+}
+
+.form-output.error-msg {
+  display: block;
+  background: rgba(192,70,46,0.08);
+  border-color: rgba(192,70,46,0.25);
+  color: var(--clr-rust);
+}
+
+/* ── LIGHTBOX ── */
+
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox.active { display: flex; }
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: var(--radius-md);
+  object-fit: contain;
+  box-shadow: 0 0 60px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.5rem;
+  color: white;
+  font-size: 2.2rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+}

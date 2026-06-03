@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help Guide — Salem City Community Portal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --ink: #1a1a2e;
+      --cream: #f5f0e8;
+      --terracotta: #c0553a;
+      --gold: #d4a843;
+      --sage: #5a7a5a;
+      --slate: #4a5568;
+      --border: #ddd5c8;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.75; }
+
+    header {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--gold); }
+    .logo span { color: var(--cream); }
+
+    header a {
+      color: var(--cream);
+      text-decoration: none;
+      font-size: 0.88rem;
+      padding: 0.4rem 0.9rem;
+      border: 1px solid rgba(245,240,232,0.3);
+      border-radius: 4px;
+    }
+
+    header a:hover { border-color: var(--gold); color: var(--gold); }
+
+    main {
+      max-width: 820px;
+      margin: 3rem auto;
+      padding: 0 2rem 4rem;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+
+    .subtitle { color: var(--slate); margin-bottom: 2.5rem; }
+
+    .divider { width: 40px; height: 3px; background: var(--terracotta); border-radius: 2px; margin: 0.5rem 0 2rem; }
+
+    .faq-group { margin-bottom: 2.5rem; }
+
+    .faq-group h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      color: var(--terracotta);
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item { margin-bottom: 1.2rem; }
+
+    .faq-item h3 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-item p { font-size: 0.9rem; color: var(--slate); }
+
+    .contact-box {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .contact-box h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 0.75rem; }
+    .contact-box p { font-size: 0.9rem; color: var(--slate); }
+    .contact-box a { color: var(--terracotta); }
+
+    footer {
+      background: #0f0f1e;
+      color: rgba(245,240,232,0.45);
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.82rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Salem <span>City</span> Portal</div>
+    <a href="index.html">← Back to Portal</a>
+  </header>
+
+  <main>
+    <h1>Help Guide</h1>
+    <p class="subtitle">Answers to common questions about using the Salem City Community Event Portal.</p>
+    <div class="divider"></div>
+
+    <div class="faq-group">
+      <h2>Registration</h2>
+      <div class="faq-item">
+        <h3>How do I register for an event?</h3>
+        <p>Go to the "Register" section on the main page. Fill in your name, email, phone number, preferred date, and choose the event type. Click "Confirm Registration" to complete your booking.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is there a registration fee?</h3>
+        <p>It depends on the event. Cultural fests, health camps, and the Independence Day parade are free. Workshops, sports carnivals, and tech summits carry a nominal fee shown in the event listing and during registration.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can I register for multiple participants?</h3>
+        <p>Yes. The registration form includes a "Number of Participants" field. You can register up to 10 people per submission.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <h2>Location & Events</h2>
+      <div class="faq-item">
+        <h3>How does the "Find Nearby Events" feature work?</h3>
+        <p>Click the "Find Nearby Events" button under the Location section. Your browser will request permission to access your GPS location. Once granted, it displays your coordinates and lists the closest upcoming events with approximate distances.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What if I deny location access?</h3>
+        <p>The portal will display a clear error message asking you to enable location permissions in your browser settings. No data is stored if you deny access.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <h2>Preferences & Data</h2>
+      <div class="faq-item">
+        <h3>What does "Save Preference" do?</h3>
+        <p>The portal saves your preferred event type to your browser's local storage. The next time you visit, your preference is automatically restored, and matching events are highlighted for you.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How do I clear my saved data?</h3>
+        <p>Click the "Clear Preferences" button in the Preferences section. This removes all data saved in both localStorage and sessionStorage for this portal.</p>
+      </div>
+    </div>
+
+    <div class="faq-group">
+      <h2>Feedback & Support</h2>
+      <div class="faq-item">
+        <h3>How do I submit feedback for a past event?</h3>
+        <p>Scroll to the "Event Feedback" section, select the event you attended, write your comments, and click "Submit Feedback". Feedback is reviewed by the city events team.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Why does a warning appear when I try to leave the page?</h3>
+        <p>If you have started filling in the registration form but haven't submitted it yet, the portal will warn you before you navigate away. This prevents accidental loss of your details.</p>
+      </div>
+    </div>
+
+    <div class="contact-box">
+      <h2>Still need help?</h2>
+      <p>Contact the Salem City Events Office at <a href="mailto:events@salemcity.gov.in">events@salemcity.gov.in</a> or call <a href="tel:+914272250000">0427 - 225 0000</a> between Monday to Friday, 9 AM – 5 PM.</p>
+    </div>
+  </main>
+
+  <footer>&copy; 2026 Salem City Community Portal</footer>
+
+</body>
+</html>

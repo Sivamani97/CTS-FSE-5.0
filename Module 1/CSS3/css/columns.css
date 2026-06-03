@@ -1,0 +1,82 @@
+/* ============================================================
+   columns.css — Exercise 9
+   Demonstrates: column-count, column-gap, column-rule
+   CSS3 multi-column layout for the community bulletin section
+   ============================================================ */
+
+/* Bulletin section wrapper */
+#bulletin {
+  background: var(--clr-white);
+}
+
+.bulletin-article {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Multi-column newspaper-style layout */
+.multi-col {
+  column-count: 2;
+  column-gap: 2.5rem;
+  column-rule: 1px solid var(--clr-border);
+  text-align: justify;
+  hyphens: auto;
+}
+
+.multi-col p {
+  font-size: 0.93rem;
+  line-height: 1.78;
+  color: var(--clr-slate);
+  margin-bottom: 0.75rem;
+  break-inside: avoid;
+}
+
+/* Headline spans full column width */
+.col-span-all {
+  column-span: all;
+  margin-bottom: var(--sp-md);
+}
+
+.col-span-all h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  color: var(--clr-ink);
+  text-align: center;
+  border-bottom: 2px solid var(--clr-border);
+  padding-bottom: 0.75rem;
+}
+
+.col-span-all .divider-line {
+  margin: 0 auto 0.75rem;
+}
+
+/* Bulletin byline */
+.bulletin-byline {
+  column-span: all;
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--clr-slate);
+  font-style: italic;
+  margin-bottom: var(--sp-md);
+}
+
+/* Pull quote — breaks across column nicely */
+.pull-quote {
+  border-left: 4px solid var(--clr-amber);
+  padding: 0.6rem 0.9rem;
+  margin: 0.75rem 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--clr-ink);
+  background: var(--clr-amber-soft);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  break-inside: avoid;
+}
+
+/* Three-column layout variant for wider content */
+.multi-col-3 {
+  column-count: 3;
+  column-gap: 2rem;
+  column-rule: 1px dashed var(--clr-border);
+}

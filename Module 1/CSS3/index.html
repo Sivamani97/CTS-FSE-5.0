@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salem City — Community Event Portal</title>
+
+  <!-- Exercise 5: Google Fonts via <link> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Jost:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Exercise 1: External stylesheets — ordered by specificity -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/selectors.css">
+  <link rel="stylesheet" href="css/colors.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/links-lists.css">
+  <link rel="stylesheet" href="css/tables.css">
+  <link rel="stylesheet" href="css/boxmodel.css">
+  <link rel="stylesheet" href="css/columns.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Exercise 1: Internal <style> — body background fallback colour -->
+  <style>
+    /* Internal style: body background fallback colour (Exercise 1) */
+    body {
+      background-color: #f6f1e9;
+    }
+
+    /* Section-level padding helper used across all sections */
+    .pt-section { padding-top: var(--sp-xl); }
+    .pb-section { padding-bottom: var(--sp-xl); }
+
+    /* Video status */
+    .video-status {
+      margin-top: 0.75rem;
+      font-style: italic;
+      color: var(--clr-amber);
+      font-size: 0.9rem;
+    }
+
+    /* Char counter */
+    .char-counter {
+      text-align: right;
+      font-size: 0.78rem;
+      color: var(--clr-slate);
+    }
+
+    /* Pref status */
+    .pref-status {
+      margin-top: 0.75rem;
+      font-size: 0.87rem;
+      font-weight: 500;
+    }
+
+    /* Contact item */
+    .contact-item h4 { margin-bottom: 0.35rem; }
+    .contact-item p  { color: rgba(246,241,233,0.7); }
+
+    /* Fee display */
+    .fee-display {
+      font-size: 0.84rem;
+      color: var(--clr-sage);
+      font-weight: 500;
+      padding: 0.25rem 0;
+      min-height: 1.4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <div class="site-logo">Salem <span>City</span> Portal</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#bulletin">Bulletin</a></li>
+        <li><a href="#admin">Admin Table</a></li>
+        <li><a href="#registration">Register</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="help.html" target="_blank">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">
+    Welcome, Resident! &nbsp;|&nbsp;
+    <span class="offer">Free entry for volunteers this season</span> &nbsp;|&nbsp;
+    <span class="highlight">3 new events added this week</span>
+  </div>
+
+  <!-- Hero / Home -->
+  <!-- ID selector #mainHeader used in selectors.css + colors.css -->
+  <section id="mainHeader" id="home">
+    <!--
+      Exercise 1: Inline style on ONE heading to demonstrate
+      inline CSS (highest specificity, overrides all external rules)
+    -->
+    <h1 style="color: #e8c060;">
+      Your City.<br><em>Your Events.</em>
+    </h1>
+    <p class="text-lead">
+      Discover, register, and participate in community events happening
+      across Salem — cultural fests, civic workshops, sports carnivals and more.
+    </p>
+    <div class="hero-actions">
+      <a href="#events" class="cta-button">Browse Events</a>
+      <a href="#registration" class="cta-button cta-button-outline">Register Now</a>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="section bg-white">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Upcoming</h4>
+        <h2>Community Events</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">Find events near you and sign up before spots fill up.</p>
+      </div>
+
+      <!-- Grid layout — responsive.css -->
+      <div class="events-grid">
+
+        <div class="eventCard">
+          <div class="eventCard-top">
+            <span class="text-mono">June 14, 2026</span>
+            <span class="event-tag tag-free">Free</span>
+          </div>
+          <div class="eventCard-body">
+            <h3>Heritage Cultural Fest</h3>
+            <p>Folk music, dance performances, and authentic regional cuisine celebrating Salem's diversity.</p>
+            <div class="eventCard-meta">
+              <span>📍 Yercaud Road Ground</span>
+              <span>⏰ 5:00 PM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventCard">
+          <div class="eventCard-top">
+            <span class="text-mono">June 20, 2026</span>
+            <span class="event-tag tag-paid">₹150</span>
+          </div>
+          <div class="eventCard-body">
+            <h3>Green Salem Workshop</h3>
+            <p>Interactive eco-awareness workshop: waste management, urban gardening, and clean energy.</p>
+            <div class="eventCard-meta">
+              <span>📍 Town Hall, Swarnapuri</span>
+              <span>⏰ 10:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventCard">
+          <div class="eventCard-top">
+            <span class="text-mono">July 5, 2026</span>
+            <span class="event-tag tag-paid">₹80</span>
+          </div>
+          <div class="eventCard-body">
+            <h3>Youth Sports Carnival</h3>
+            <p>Cricket, kabaddi, athletics, and chess for children and young adults across the city.</p>
+            <div class="eventCard-meta">
+              <span>📍 Salem Sports Complex</span>
+              <span>⏰ 8:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventCard">
+          <div class="eventCard-top">
+            <span class="text-mono">July 18, 2026</span>
+            <span class="event-tag tag-free">Free</span>
+          </div>
+          <div class="eventCard-body">
+            <h3>Senior Citizens Health Camp</h3>
+            <p>Free screening: blood pressure, eye checkup, and specialist consultation for senior residents.</p>
+            <div class="eventCard-meta">
+              <span>📍 Corporation Office</span>
+              <span>⏰ 9:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventCard">
+          <div class="eventCard-top">
+            <span class="text-mono">Aug 2, 2026</span>
+            <span class="event-tag tag-paid">₹200</span>
+          </div>
+          <div class="eventCard-body">
+            <h3>Civic Tech Summit</h3>
+            <p>Talks and demos on smart city infrastructure, public digital services, and open data.</p>
+            <div class="eventCard-meta">
+              <span>📍 Bharat Mata Hall</span>
+              <span>⏰ 11:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventCard">
+          <div class="eventCard-top">
+            <span class="text-mono">Aug 15, 2026</span>
+            <span class="event-tag tag-featured">Featured</span>
+          </div>
+          <div class="eventCard-body">
+            <h3>Independence Day Parade</h3>
+            <p>Flag hoisting, cultural procession, and citizen awards ceremony on Independence Day.</p>
+            <div class="eventCard-meta">
+              <span>📍 Collector's Office Ground</span>
+              <span>⏰ 8:00 AM</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Gallery — table layout -->
+  <section id="gallery" class="section bg-light">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Photo Gallery</h4>
+        <h2>Past Event Highlights</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">Double-click any image to enlarge.</p>
+      </div>
+
+      <table class="gallery-table">
+        <caption class="sr-only">Photos from Salem Community Events 2025–2026</caption>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=250&fit=crop"
+              alt="Heritage Cultural Fest 2025 at Yercaud Road Ground"
+              title="Heritage Cultural Fest 2025"
+              class="gallery-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Heritage Cultural Fest — June 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=250&fit=crop"
+              alt="Green Salem Workshop at Town Hall"
+              title="Green Salem Workshop 2025"
+              class="gallery-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Green Salem Workshop — April 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?w=400&h=250&fit=crop"
+              alt="Youth Sports Carnival cricket match"
+              title="Youth Sports Carnival 2025"
+              class="gallery-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Youth Sports Carnival — March 2025</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop"
+              alt="Senior Citizens Health Camp"
+              title="Senior Health Camp 2025"
+              class="gallery-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Senior Health Camp — Feb 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=250&fit=crop"
+              alt="Civic Tech Summit speakers on stage"
+              title="Civic Tech Summit 2025"
+              class="gallery-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Civic Tech Summit — Jan 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&h=250&fit=crop"
+              alt="Independence Day parade and flag hoisting"
+              title="Independence Day 2025"
+              class="gallery-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Independence Day Parade — Aug 2025</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImg" src="" alt="Enlarged event photo">
+  </div>
+
+  <!-- Community Bulletin — Multi-column layout -->
+  <section id="bulletin" class="section bg-white">
+    <div class="section-wrap">
+      <div class="bulletin-article">
+        <article class="multi-col">
+          <div class="col-span-all">
+            <h4 class="text-center">Community Newsletter</h4>
+            <h2>Salem City Bulletin — June 2026</h2>
+            <div class="divider-line" style="margin: 0.5rem auto 0.75rem;"></div>
+          </div>
+          <p class="bulletin-byline">Published by the Salem Municipal Events Office · Volume 12, Issue 6</p>
+
+          <p>
+            The Salem City Council is proud to announce a packed calendar of community events for the upcoming season.
+            This summer promises to be one of the most vibrant in recent memory, with cultural programmes, health
+            initiatives, and civic participation drives running from June through August across all major city zones.
+          </p>
+
+          <p>
+            The Heritage Cultural Fest, returning to Yercaud Road Ground after a brief hiatus, will feature over forty
+            folk artists from across Tamil Nadu. Organisers expect more than two thousand attendees over the course of
+            the two-day event, making it the single largest community gathering this year.
+          </p>
+
+          <div class="pull-quote">
+            "Participation in civic events strengthens the social fabric of our neighbourhoods."
+            — Commissioner, Salem Municipal Corporation
+          </div>
+
+          <p>
+            The Green Salem Workshop series, now in its fourth year, has drawn consistently strong interest from
+            residents aged eighteen to forty-five. This year's session at Town Hall will include hands-on
+            demonstrations of urban composting and rooftop solar installations, followed by an open Q&amp;A
+            with city engineers.
+          </p>
+
+          <p>
+            Youth sports registrations have already crossed the five hundred mark, a new record. The Sports Carnival
+            committee has expanded the chess and athletics tracks to accommodate the surge in interest from school-age
+            participants. Parents are encouraged to register their children early via the online portal.
+          </p>
+
+          <p>
+            The Senior Citizens Health Camp continues its tradition of free comprehensive screenings for residents
+            above the age of sixty. This year, ophthalmology and dental checkup stations have been added, sponsored
+            by two city hospitals in partnership with the corporation.
+          </p>
+
+          <p>
+            Looking ahead, the Civic Tech Summit in August will bring together developers, urban planners, and
+            government officials to discuss the city's five-year digital infrastructure roadmap. Attendance is open
+            to all residents with a valid registration.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admin Events Table — Exercise 7 -->
+  <section id="admin" class="section bg-light">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Administration</h4>
+        <h2>Events Schedule</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">Full overview of all registered community events for 2026.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="events-table">
+          <caption>Salem Community Events — 2026 Schedule</caption>
+          <thead>
+            <tr>
+              <th>Event Name</th>
+              <th>Date</th>
+              <th>Venue</th>
+              <th>Category</th>
+              <th>Entry Fee</th>
+              <th>Capacity</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Heritage Cultural Fest</td>
+              <td>14 Jun 2026</td>
+              <td>Yercaud Road Ground</td>
+              <td>Cultural</td>
+              <td>Free</td>
+              <td>2,000</td>
+              <td><span class="event-tag tag-free">Open</span></td>
+            </tr>
+            <tr>
+              <td>Green Salem Workshop</td>
+              <td>20 Jun 2026</td>
+              <td>Town Hall, Swarnapuri</td>
+              <td>Workshop</td>
+              <td>₹150</td>
+              <td>300</td>
+              <td><span class="event-tag tag-free">Open</span></td>
+            </tr>
+            <tr>
+              <td>Youth Sports Carnival</td>
+              <td>05 Jul 2026</td>
+              <td>Salem Sports Complex</td>
+              <td>Sports</td>
+              <td>₹80</td>
+              <td>1,000</td>
+              <td><span class="event-tag tag-paid">Filling Fast</span></td>
+            </tr>
+            <tr>
+              <td>Senior Health Camp</td>
+              <td>18 Jul 2026</td>
+              <td>Corporation Office</td>
+              <td>Health</td>
+              <td>Free</td>
+              <td>500</td>
+              <td><span class="event-tag tag-free">Open</span></td>
+            </tr>
+            <tr>
+              <td>Civic Tech Summit</td>
+              <td>02 Aug 2026</td>
+              <td>Bharat Mata Hall</td>
+              <td>Technology</td>
+              <td>₹200</td>
+              <td>400</td>
+              <td><span class="event-tag tag-paid">Open</span></td>
+            </tr>
+            <tr>
+              <td>Independence Day Parade</td>
+              <td>15 Aug 2026</td>
+              <td>Collector's Office Ground</td>
+              <td>Civic</td>
+              <td>Free</td>
+              <td>5,000</td>
+              <td><span class="event-tag tag-featured">Featured</span></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5">Total Events: 6 &nbsp;|&nbsp; 2 Paid · 3 Free · 1 Featured</td>
+              <td colspan="2">Season: Jun–Aug 2026</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Event Registration Form -->
+  <section id="registration" class="section bg-white">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Sign Up</h4>
+        <h2>Register for an Event</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">Complete the form to secure your spot at any upcoming event.</p>
+      </div>
+
+      <div class="form-grid" style="max-width:780px;">
+
+        <div class="form-group">
+          <label for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName"
+            placeholder="e.g. Arunachalam Murugan"
+            required autofocus autocomplete="name">
+          <span class="field-msg error" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" name="email"
+            placeholder="e.g. arun@example.com"
+            required autocomplete="email">
+          <span class="field-msg error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone"
+            placeholder="10-digit mobile number"
+            required onblur="validatePhone()">
+          <span class="field-msg error" id="phoneError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="eventDate">Preferred Date <span class="req">*</span></label>
+          <input type="date" id="eventDate" name="eventDate" required>
+          <span class="field-msg error" id="dateError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="eventType">Event Type <span class="req">*</span></label>
+          <select id="eventType" name="eventType" required onchange="showEventFee()">
+            <option value="">— Select an Event —</option>
+            <option value="cultural">Heritage Cultural Fest (Free)</option>
+            <option value="workshop">Green Salem Workshop (₹150)</option>
+            <option value="sports">Youth Sports Carnival (₹80)</option>
+            <option value="health">Senior Health Camp (Free)</option>
+            <option value="tech">Civic Tech Summit (₹200)</option>
+            <option value="parade">Independence Day Parade (Free)</option>
+          </select>
+          <div class="fee-display" id="feeDisplay"></div>
+          <span class="field-msg error" id="eventError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="participants">Participants</label>
+          <input type="number" id="participants" min="1" max="10" value="1">
+        </div>
+
+        <div class="form-group full-col">
+          <label for="message">Additional Message</label>
+          <textarea id="message" rows="4"
+            placeholder="Special requirements, accessibility needs..."
+            onkeyup="countChars(this, 'charCount', 300)"></textarea>
+          <div class="char-counter"><span id="charCount">0</span> / 300</div>
+        </div>
+
+        <div class="form-group full-col">
+          <button type="button" class="cta-button" onclick="submitRegistration()"
+            style="width:fit-content;">
+            Confirm Registration
+          </button>
+        </div>
+
+        <output class="form-output" id="regOutput" style="grid-column:1/-1;"></output>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section id="feedback" class="section bg-light">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Your Voice</h4>
+        <h2>Event Feedback</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">Your experience helps us improve future events.</p>
+      </div>
+
+      <div class="form-grid" style="max-width:680px;">
+        <div class="form-group">
+          <label for="fbName">Your Name</label>
+          <input type="text" id="fbName" placeholder="Full name">
+        </div>
+
+        <div class="form-group">
+          <label for="fbEvent">Event Attended</label>
+          <select id="fbEvent" onchange="showFeedbackEvent()">
+            <option value="">— Select Event —</option>
+            <option value="Heritage Cultural Fest">Heritage Cultural Fest</option>
+            <option value="Green Salem Workshop">Green Salem Workshop</option>
+            <option value="Youth Sports Carnival">Youth Sports Carnival</option>
+            <option value="Senior Health Camp">Senior Health Camp</option>
+            <option value="Civic Tech Summit">Civic Tech Summit</option>
+          </select>
+          <div class="fee-display" id="fbEventDisplay"></div>
+        </div>
+
+        <div class="form-group full-col">
+          <label for="fbComment">Your Feedback</label>
+          <textarea id="fbComment" rows="4"
+            placeholder="What did you enjoy? Any suggestions?"
+            onkeyup="countChars(this, 'fbCharCount', 500)"></textarea>
+          <div class="char-counter"><span id="fbCharCount">0</span> / 500</div>
+        </div>
+
+        <div class="form-group full-col">
+          <button type="button" class="cta-button" onclick="submitFeedback()"
+            style="width:fit-content;">
+            Submit Feedback
+          </button>
+        </div>
+
+        <output class="form-output" id="fbOutput" style="grid-column:1/-1;"></output>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video-section" class="section bg-dark" style="color:var(--clr-cream);">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4 style="color:var(--clr-amber);">Watch</h4>
+        <h2 style="color:var(--clr-cream);">Event Promo Video</h2>
+        <div class="divider-line" style="background:var(--clr-amber);"></div>
+        <p style="color:rgba(246,241,233,0.65);">Highlights from our most recent community celebration.</p>
+      </div>
+
+      <div class="video-wrap">
+        <video id="promoVideo" controls preload="metadata"
+          oncanplay="videoReady()"
+          poster="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=720&h=400&fit=crop">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+      </div>
+      <p class="video-status" id="videoStatus">Loading video...</p>
+    </div>
+  </section>
+
+  <!-- Geolocation -->
+  <section id="location" class="section bg-white">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Find</h4>
+        <h2>Nearby Events</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">Allow location access to discover events closest to you.</p>
+      </div>
+      <div class="geo-card">
+        <p style="font-size:0.9rem;color:var(--clr-slate);margin-bottom:var(--sp-md);">
+          Click below to detect your current coordinates and see the nearest upcoming events.
+        </p>
+        <button class="cta-button" onclick="findNearbyEvents()">📍 Find Nearby Events</button>
+        <div class="geo-result" id="geoResult"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preferences — localStorage -->
+  <section id="preferences" class="section bg-light">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Settings</h4>
+        <h2>Your Preferences</h2>
+        <div class="divider-line"></div>
+        <p class="text-subtitle">We remember your favourite event type across sessions.</p>
+      </div>
+      <div class="pref-card">
+        <div class="form-group">
+          <label for="prefEvent">Preferred Event Type</label>
+          <select id="prefEvent" onchange="savePreference()">
+            <option value="">— Select Preference —</option>
+            <option value="Cultural Events">Cultural Events</option>
+            <option value="Workshops">Workshops</option>
+            <option value="Sports">Sports</option>
+            <option value="Health Camps">Health Camps</option>
+            <option value="Technology">Technology</option>
+          </select>
+        </div>
+        <p class="pref-status" id="prefStatus" style="color:var(--clr-sage);"></p>
+        <div style="margin-top:var(--sp-md);">
+          <button class="cta-button" style="background:transparent;color:var(--clr-rust);border:2px solid var(--clr-rust);box-shadow:none;"
+            onclick="clearPreferences()">
+            Clear Preferences
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section bg-navy">
+    <div class="section-wrap">
+      <div class="section-head">
+        <h4>Get in Touch</h4>
+        <h2 style="color:var(--clr-amber);">Contact Us</h2>
+        <div class="divider-line" style="background:var(--clr-rust);"></div>
+        <p style="color:rgba(246,241,233,0.65);">Reach the Salem City Events Team for enquiries and support.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h4>Address</h4>
+          <p>Salem Municipal Corporation<br>Shevapet, Salem — 636002<br>Tamil Nadu, India</p>
+        </div>
+        <div class="contact-item">
+          <h4>Phone</h4>
+          <p><a href="tel:+914272250000">0427 – 225 0000</a><br>Mon–Fri, 9 AM – 5 PM</p>
+        </div>
+        <div class="contact-item">
+          <h4>Email</h4>
+          <p><a href="mailto:events@salemcity.gov.in">events@salemcity.gov.in</a></p>
+        </div>
+        <div class="contact-item">
+          <h4>Help Guide</h4>
+          <p><a href="help.html" target="_blank">Open Help Document →</a></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#0a0f1c;padding:1.2rem var(--sp-lg);text-align:center;">
+    <p class="text-fine">
+      &copy; 2026 Salem City Community Portal &nbsp;|&nbsp;
+      Built by the <a href="#contact">City Events Office</a>
+    </p>
+  </footer>
+
+  <script>
+    /* ── Phone validation — onblur ── */
+    function validatePhone() {
+      const phone = document.getElementById('phone');
+      const error = document.getElementById('phoneError');
+      const val   = phone.value.trim();
+      const valid = /^[6-9]\d{9}$/.test(val);
+
+      if (!val) {
+        phone.className = '';
+        error.textContent = '';
+      } else if (!valid) {
+        phone.classList.add('is-invalid');
+        phone.classList.remove('is-valid');
+        error.textContent = 'Enter a valid 10-digit Indian mobile number.';
+      } else {
+        phone.classList.add('is-valid');
+        phone.classList.remove('is-invalid');
+        error.textContent = '';
+      }
+    }
+
+    /* ── Event fee — onchange ── */
+    const eventFees = {
+      cultural: 'Entry: Free — no registration fee',
+      workshop: 'Entry Fee: ₹150 per person',
+      sports:   'Entry Fee: ₹80 per person',
+      health:   'Entry: Free — open to all residents',
+      tech:     'Entry Fee: ₹200 per person',
+      parade:   'Entry: Free — public event'
+    };
+
+    function showEventFee() {
+      const val = document.getElementById('eventType').value;
+      document.getElementById('feeDisplay').textContent = eventFees[val] || '';
+      if (val) sessionStorage.setItem('lastSelectedEvent', val);
+    }
+
+    /* ── Character counter — onkeyup ── */
+    function countChars(textarea, counterId, max) {
+      const len = textarea.value.length;
+      if (len > max) textarea.value = textarea.value.substring(0, max);
+      document.getElementById(counterId).textContent = Math.min(len, max);
+    }
+
+    /* ── Registration submit — onclick ── */
+    function submitRegistration() {
+      const name      = document.getElementById('fullName').value.trim();
+      const email     = document.getElementById('email').value.trim();
+      const phone     = document.getElementById('phone').value.trim();
+      const date      = document.getElementById('eventDate').value;
+      const eventType = document.getElementById('eventType').value;
+      const output    = document.getElementById('regOutput');
+      let valid = true;
+
+      const checks = [
+        { val: name,      errId: 'nameError',  msg: 'Full name is required.' },
+        { val: email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? email : '',
+                           errId: 'emailError', msg: 'Enter a valid email address.' },
+        { val: /^[6-9]\d{9}$/.test(phone) ? phone : '',
+                           errId: 'phoneError', msg: 'Enter a valid 10-digit mobile number.' },
+        { val: date,       errId: 'dateError',  msg: 'Please select an event date.' },
+        { val: eventType,  errId: 'eventError', msg: 'Please select an event type.' }
+      ];
+
+      checks.forEach(c => {
+        const el = document.getElementById(c.errId);
+        if (!c.val) { el.textContent = c.msg; valid = false; }
+        else        { el.textContent = ''; }
+      });
+
+      if (!valid) return;
+
+      const labels = {
+        cultural: 'Heritage Cultural Fest', workshop: 'Green Salem Workshop',
+        sports: 'Youth Sports Carnival',    health: 'Senior Health Camp',
+        tech: 'Civic Tech Summit',          parade: 'Independence Day Parade'
+      };
+
+      output.textContent = `Registration confirmed for ${name}! You are registered for "${labels[eventType]}" on ${date}. Confirmation sent to ${email}.`;
+      output.className = 'form-output success';
+      output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      localStorage.setItem('lastRegisteredEvent', eventType);
+      localStorage.setItem('lastRegistrantName', name);
+      formTouched = false;
+    }
+
+    /* ── Feedback ── */
+    function showFeedbackEvent() {
+      const val = document.getElementById('fbEvent').value;
+      document.getElementById('fbEventDisplay').textContent = val ? `Selected: ${val}` : '';
+    }
+
+    function submitFeedback() {
+      const name    = document.getElementById('fbName').value.trim() || 'Anonymous';
+      const event   = document.getElementById('fbEvent').value;
+      const comment = document.getElementById('fbComment').value.trim();
+      const output  = document.getElementById('fbOutput');
+
+      if (!event) {
+        output.textContent = 'Please select the event you attended.';
+        output.className = 'form-output error-msg';
+        return;
+      }
+
+      output.textContent = `Thank you, ${name}! Your feedback for "${event}" has been submitted successfully.`;
+      output.className = 'form-output success';
+    }
+
+    /* ── Lightbox — ondblclick ── */
+    function openLightbox(img) {
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightboxImg').alt = img.alt;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    /* ── Video — oncanplay ── */
+    function videoReady() {
+      document.getElementById('videoStatus').textContent = '✓ Video is ready to play.';
+    }
+
+    /* ── Geolocation ── */
+    function findNearbyEvents() {
+      const result = document.getElementById('geoResult');
+      result.classList.add('active');
+      result.innerHTML = 'Detecting your location…';
+
+      if (!navigator.geolocation) {
+        result.innerHTML = '<strong>Error:</strong> Geolocation is not supported by your browser.';
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          const lat = pos.coords.latitude.toFixed(5);
+          const lon = pos.coords.longitude.toFixed(5);
+          const acc = Math.round(pos.coords.accuracy);
+          result.innerHTML =
+            `<strong>Location Found!</strong><br>
+             Latitude: ${lat} &nbsp; Longitude: ${lon}<br>
+             Accuracy: ±${acc} metres<br><br>
+             <strong>Nearest Events:</strong><br>
+             📍 Heritage Cultural Fest — 2.3 km (Yercaud Road Ground)<br>
+             📍 Green Salem Workshop — 4.1 km (Town Hall, Swarnapuri)<br>
+             📍 Senior Health Camp — 5.7 km (Corporation Office)`;
+        },
+        err => {
+          const msgs = {
+            [err.PERMISSION_DENIED]:    'Location access was denied. Please enable it in browser settings.',
+            [err.POSITION_UNAVAILABLE]: 'Location information is unavailable. Please try again.',
+            [err.TIMEOUT]:              'Location request timed out. Check your connection and retry.'
+          };
+          result.innerHTML = '<strong>Error:</strong> ' + (msgs[err.code] || 'An unknown error occurred.');
+        },
+        { enableHighAccuracy: true, timeout: 8000, maximumAge: 0 }
+      );
+    }
+
+    /* ── localStorage preferences ── */
+    function savePreference() {
+      const val    = document.getElementById('prefEvent').value;
+      const status = document.getElementById('prefStatus');
+      if (val) {
+        localStorage.setItem('preferredEventType', val);
+        sessionStorage.setItem('sessionPref', val);
+        status.textContent = `✓ Preference saved: ${val}`;
+        status.style.color = 'var(--clr-sage)';
+      }
+    }
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.getElementById('prefEvent').value = '';
+      const status = document.getElementById('prefStatus');
+      status.textContent = 'All preferences cleared.';
+      status.style.color = 'var(--clr-rust)';
+    }
+
+    function loadPreferences() {
+      const saved = localStorage.getItem('preferredEventType');
+      if (saved) {
+        document.getElementById('prefEvent').value = saved;
+        const status = document.getElementById('prefStatus');
+        status.textContent = `✓ Preference restored: ${saved}`;
+        status.style.color = 'var(--clr-sage)';
+      }
+    }
+
+    /* ── beforeunload warning ── */
+    let formTouched = false;
+    ['fullName', 'email', 'phone', 'message'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => { formTouched = true; });
+    });
+
+    window.addEventListener('beforeunload', e => {
+      if (formTouched) {
+        e.preventDefault();
+        e.returnValue = 'You have unsaved registration details. Leave anyway?';
+      }
+    });
+
+    /* ── Init ── */
+    loadPreferences();
+    document.getElementById('eventDate').min = new Date().toISOString().split('T')[0];
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+/* ============================================================
+   colors.css — Exercise 4
+   Demonstrates: HEX colours, RGBA, linear-gradient, background-image
+   ============================================================ */
+
+/* Body background — colour fallback + subtle texture pattern */
+body {
+  background-color: #f6f1e9;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(18,25,43,0.04) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* Section backgrounds alternate between cream and white */
+.bg-white  { background-color: #ffffff; }
+.bg-cream  { background-color: #f6f1e9; }
+.bg-light  { background-color: #edeae3; }
+.bg-dark   { background-color: #12192b; }
+.bg-navy   { background-color: #1e2d4d; }
+
+/* Gradient section headers — Exercise 4 */
+.gradient-header {
+  background: linear-gradient(120deg, #12192b 0%, #1e2d4d 50%, #2a3d6b 100%);
+  color: #f6f1e9;
+}
+
+/* Amber accent gradient */
+.gradient-amber {
+  background: linear-gradient(90deg, #e8a020 0%, #f0c050 100%);
+}
+
+/* Rust / CTA gradient */
+.gradient-rust {
+  background: linear-gradient(135deg, #c0462e 0%, #e05a3a 100%);
+}
+
+/* Sage gradient */
+.gradient-sage {
+  background: linear-gradient(135deg, #3d6147 0%, #4e7c59 100%);
+}
+
+/* Hero overlay text colour using RGBA */
+#mainHeader h1 { color: rgba(246, 241, 233, 1);   }
+#mainHeader p  { color: rgba(246, 241, 233, 0.72); }
+
+/* Inline-style demonstration: the red heading is handled in index.html
+   via a true inline style attribute to show Exercise 1 contrast.
+   Here we ensure all other h1s follow brand colour: */
+h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  color: var(--clr-ink);
+}
+
+/* Event tag badges — HEX colours */
+.tag-free     { background-color: #eaf4ec; color: #2e6b3d; border: 1px solid #9ecfaa; }
+.tag-paid     { background-color: #fdf3e7; color: #9a5a10; border: 1px solid #f0c070; }
+.tag-featured { background-color: #fdecea; color: #8b2217; border: 1px solid #f0a090; }
+
+.event-tag {
+  display: inline-block;
+  padding: 0.18rem 0.65rem;
+  border-radius: 20px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Welcome banner with RGBA background */
+#welcomeBanner {
+  background-color: rgba(30, 45, 77, 0.95);
+  color: var(--clr-cream);
+  padding: 0.7rem var(--sp-lg);
+  text-align: center;
+  font-size: 0.88rem;
+}
+
+#welcomeBanner .offer {
+  color: #ff7a5c;
+  font-weight: 700;
+}
+
+.highlight {
+  background-color: rgba(232, 160, 32, 0.25);
+  padding: 0 5px;
+  border-radius: 3px;
+}

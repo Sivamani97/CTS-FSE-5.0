@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salem City Community Event Portal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap');
+
+    :root {
+      --ink: #1a1a2e;
+      --cream: #f5f0e8;
+      --terracotta: #c0553a;
+      --gold: #d4a843;
+      --sage: #5a7a5a;
+      --slate: #4a5568;
+      --light-gray: #f0ece4;
+      --white: #ffffff;
+      --border: #ddd5c8;
+      --error: #c0553a;
+      --success: #5a7a5a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 0 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: 0.02em;
+      color: var(--gold);
+    }
+
+    .logo span { color: var(--cream); }
+
+    /* Navigation */
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 0.25rem;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--cream);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.4rem 0.85rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+      letter-spacing: 0.03em;
+    }
+
+    nav ul li a:hover {
+      background: var(--terracotta);
+      color: var(--white);
+    }
+
+    /* ── HERO ── */
+    #home {
+      background: linear-gradient(135deg, var(--ink) 0%, #2d2d4e 60%, #1a1a2e 100%);
+      color: var(--cream);
+      padding: 6rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(212,168,67,0.12) 0%, transparent 65%),
+                  radial-gradient(ellipse at 20% 80%, rgba(192,85,58,0.1) 0%, transparent 55%);
+      pointer-events: none;
+    }
+
+    #home h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    #home h1 em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    #home p {
+      font-size: 1.1rem;
+      color: rgba(245,240,232,0.75);
+      max-width: 560px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.7rem 1.75rem;
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      border: 2px solid transparent;
+      text-decoration: none;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .btn-primary {
+      background: var(--terracotta);
+      color: var(--white);
+      border-color: var(--terracotta);
+    }
+
+    .btn-primary:hover { background: #a8432a; border-color: #a8432a; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--cream);
+      border-color: rgba(245,240,232,0.4);
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── WELCOME BANNER ── */
+    #welcomeBanner {
+      background: #1a3a5c;
+      color: var(--white);
+      padding: 1rem 2rem;
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    #welcomeBanner .offer {
+      display: inline;
+      color: #ff6b6b;
+      font-weight: 700;
+    }
+
+    .highlight {
+      background: rgba(212,168,67,0.2);
+      padding: 0 4px;
+      border-radius: 3px;
+      font-weight: 500;
+    }
+
+    /* ── SECTION WRAPPER ── */
+    .section {
+      padding: 4.5rem 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .section-header p {
+      color: var(--slate);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 3px;
+      background: var(--terracotta);
+      margin: 0.6rem 0 1rem;
+      border-radius: 2px;
+    }
+
+    /* ── EVENTS ── */
+    #events {
+      background: var(--white);
+      padding: 4.5rem 0;
+    }
+
+    #events .section { padding-top: 0; padding-bottom: 0; }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--cream);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .event-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,0.1); transform: translateY(-2px); }
+
+    .event-card-top {
+      background: var(--ink);
+      color: var(--gold);
+      padding: 0.9rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .event-card-body { padding: 1.2rem; }
+
+    .event-card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .event-card-body p { color: var(--slate); font-size: 0.9rem; margin-bottom: 0.75rem; }
+
+    .event-meta {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.82rem;
+      color: var(--slate);
+    }
+
+    .event-meta span::before { margin-right: 0.25rem; }
+
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      background: rgba(90,122,90,0.12);
+      color: var(--sage);
+      border: 1px solid rgba(90,122,90,0.25);
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--light-gray); padding: 4.5rem 0; }
+    #gallery .section { padding-top: 0; padding-bottom: 0; }
+
+    .gallery-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 12px;
+    }
+
+    .gallery-table td {
+      vertical-align: top;
+      text-align: center;
+      width: 33.33%;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 3px solid var(--white);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .gallery-img:hover { transform: scale(1.03); box-shadow: 0 6px 24px rgba(0,0,0,0.18); }
+
+    .gallery-caption {
+      font-size: 0.82rem;
+      color: var(--slate);
+      margin-top: 0.4rem;
+      font-style: italic;
+    }
+
+    /* Image lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active { display: flex; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 8px;
+      object-fit: contain;
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.5rem;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ── REGISTRATION FORM ── */
+    #registration { background: var(--white); padding: 4.5rem 0; }
+    #registration .section { padding-top: 0; padding-bottom: 0; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .form-group.full { grid-column: 1 / -1; }
+
+    .form-group label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.03em;
+    }
+
+    .form-group label .req { color: var(--terracotta); margin-left: 2px; }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 0.65rem 0.9rem;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--ink);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--terracotta);
+      box-shadow: 0 0 0 3px rgba(192,85,58,0.12);
+    }
+
+    .form-group input.invalid { border-color: var(--error); }
+    .form-group input.valid { border-color: var(--success); }
+
+    .field-error {
+      font-size: 0.78rem;
+      color: var(--error);
+      min-height: 1rem;
+    }
+
+    .char-counter {
+      font-size: 0.78rem;
+      color: var(--slate);
+      text-align: right;
+    }
+
+    .fee-display {
+      font-size: 0.85rem;
+      color: var(--sage);
+      font-weight: 500;
+      padding: 0.35rem 0;
+    }
+
+    .form-output {
+      grid-column: 1 / -1;
+      padding: 1rem 1.2rem;
+      background: rgba(90,122,90,0.1);
+      border: 1px solid rgba(90,122,90,0.3);
+      border-radius: 8px;
+      color: var(--sage);
+      font-weight: 500;
+      display: none;
+    }
+
+    .form-output.active { display: block; }
+
+    /* ── FEEDBACK ── */
+    #feedback { background: var(--light-gray); padding: 4.5rem 0; }
+    #feedback .section { padding-top: 0; padding-bottom: 0; }
+
+    /* ── VIDEO ── */
+    #video-section { background: var(--ink); padding: 4.5rem 0; }
+    #video-section .section { padding-top: 0; padding-bottom: 0; }
+    #video-section .section-header h2,
+    #video-section .section-header p { color: var(--cream); }
+    #video-section .divider { background: var(--gold); }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    .video-wrapper video {
+      width: 100%;
+      display: block;
+    }
+
+    .video-status {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* ── GEOLOCATION ── */
+    #location { background: var(--white); padding: 4.5rem 0; }
+    #location .section { padding-top: 0; padding-bottom: 0; }
+
+    .geo-card {
+      background: var(--light-gray);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 540px;
+    }
+
+    .geo-result {
+      margin-top: 1.2rem;
+      padding: 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+      line-height: 1.9;
+      display: none;
+    }
+
+    .geo-result.active { display: block; }
+
+    .geo-result strong { color: var(--terracotta); }
+
+    /* ── PREFERENCES ── */
+    #preferences { background: var(--cream); padding: 4.5rem 0; }
+    #preferences .section { padding-top: 0; padding-bottom: 0; }
+
+    .pref-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 480px;
+    }
+
+    .pref-status {
+      margin-top: 1rem;
+      font-size: 0.88rem;
+      color: var(--sage);
+      font-weight: 500;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); padding: 4.5rem 0; }
+    #contact .section { padding-top: 0; padding-bottom: 0; }
+    #contact .section-header h2 { color: var(--gold); }
+    #contact .section-header p { color: rgba(245,240,232,0.7); }
+    #contact .divider { background: var(--terracotta); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-item { color: var(--cream); }
+    .contact-item h4 { color: var(--gold); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .contact-item p { font-size: 0.9rem; color: rgba(245,240,232,0.75); }
+    .contact-item a { color: var(--gold); text-decoration: none; }
+    .contact-item a:hover { text-decoration: underline; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0f0f1e;
+      color: rgba(245,240,232,0.45);
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.82rem;
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── UTILITIES ── */
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+
+    @media (max-width: 640px) {
+      nav ul { gap: 0; }
+      nav ul li a { padding: 0.4rem 0.5rem; font-size: 0.78rem; }
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: 1; }
+      .gallery-table { border-spacing: 6px; }
+      .gallery-img { height: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="logo">Salem <span>City</span> Portal</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#registration">Register</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="help.html" target="_blank">Help</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Welcome Banner -->
+  <div id="welcomeBanner">
+    Welcome back, <strong>Resident</strong>! &nbsp;|&nbsp;
+    <span class="offer">Special Offer: Free entry</span> for volunteers this season &nbsp;|&nbsp;
+    <span class="highlight">3 new events added this week</span>
+  </div>
+
+  <!-- Home / Hero -->
+  <section id="home">
+    <h1>Your City.<br><em>Your Events.</em><br>Your Community.</h1>
+    <p>Discover, register, and participate in local events happening across Salem — from cultural festivals to civic workshops.</p>
+    <div class="hero-btns">
+      <a href="#events" class="btn btn-primary">Browse Events</a>
+      <a href="#registration" class="btn btn-outline">Register Now</a>
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <div id="events">
+    <div class="section">
+      <div class="section-header">
+        <h2>Upcoming Events</h2>
+        <div class="divider"></div>
+        <p>Find community events near you and sign up before spots fill up.</p>
+      </div>
+      <div class="events-grid">
+        <div class="event-card">
+          <div class="event-card-top">
+            <span>June 14, 2026</span>
+            <span class="tag">Free</span>
+          </div>
+          <div class="event-card-body">
+            <h3>Heritage Cultural Fest</h3>
+            <p>Celebrate Salem's rich cultural diversity with folk music, dance performances, and authentic regional cuisine.</p>
+            <div class="event-meta">
+              <span>📍 Yercaud Road Ground</span>
+              <span>⏰ 5:00 PM</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card-top">
+            <span>June 20, 2026</span>
+            <span class="tag">₹150</span>
+          </div>
+          <div class="event-card-body">
+            <h3>Green Salem Workshop</h3>
+            <p>An interactive eco-awareness workshop covering waste management, urban gardening, and clean energy for residents.</p>
+            <div class="event-meta">
+              <span>📍 Town Hall, Swarnapuri</span>
+              <span>⏰ 10:00 AM</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card-top">
+            <span>July 5, 2026</span>
+            <span class="tag">₹80</span>
+          </div>
+          <div class="event-card-body">
+            <h3>Youth Sports Carnival</h3>
+            <p>Open-to-all sports carnival featuring cricket, kabaddi, athletics, and chess for children and young adults.</p>
+            <div class="event-meta">
+              <span>📍 Salem Sports Complex</span>
+              <span>⏰ 8:00 AM</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card-top">
+            <span>July 18, 2026</span>
+            <span class="tag">Free</span>
+          </div>
+          <div class="event-card-body">
+            <h3>Senior Citizens Health Camp</h3>
+            <p>Free health screening, blood pressure tests, eye checkup, and consultation by city-sponsored medical professionals.</p>
+            <div class="event-meta">
+              <span>📍 Corporation Office</span>
+              <span>⏰ 9:00 AM</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card-top">
+            <span>Aug 2, 2026</span>
+            <span class="tag">₹200</span>
+          </div>
+          <div class="event-card-body">
+            <h3>Civic Tech Summit</h3>
+            <p>Talks and demos on smart city infrastructure, public digital services, and open data by industry leaders.</p>
+            <div class="event-meta">
+              <span>📍 Bharat Mata Hall</span>
+              <span>⏰ 11:00 AM</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-card">
+          <div class="event-card-top">
+            <span>Aug 15, 2026</span>
+            <span class="tag">Free</span>
+          </div>
+          <div class="event-card-body">
+            <h3>Independence Day Parade</h3>
+            <p>Grand Independence Day celebration with flag hoisting, cultural procession, and citizen awards ceremony.</p>
+            <div class="event-meta">
+              <span>📍 Collector's Office Ground</span>
+              <span>⏰ 8:00 AM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Gallery -->
+  <div id="gallery">
+    <div class="section">
+      <div class="section-header">
+        <h2>Event Gallery</h2>
+        <div class="divider"></div>
+        <p>Highlights from past community events. Double-click any image to enlarge.</p>
+      </div>
+      <table class="gallery-table">
+        <caption style="caption-side:bottom;font-size:0.8rem;color:var(--slate);padding-top:0.75rem;">
+          Photos from Salem Community Events — 2025–2026
+        </caption>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&h=250&fit=crop"
+              alt="Heritage Cultural Fest 2025 at Yercaud Road Ground"
+              title="Heritage Cultural Fest 2025"
+              class="gallery-img event-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Heritage Cultural Fest — June 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&h=250&fit=crop"
+              alt="Green Salem Workshop participants at Town Hall"
+              title="Green Salem Workshop 2025"
+              class="gallery-img event-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Green Salem Workshop — April 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?w=400&h=250&fit=crop"
+              alt="Youth Sports Carnival cricket match"
+              title="Youth Sports Carnival 2025"
+              class="gallery-img event-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Youth Sports Carnival — March 2025</p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=250&fit=crop"
+              alt="Senior Citizens Health Camp doctors checking patients"
+              title="Senior Health Camp 2025"
+              class="gallery-img event-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Senior Health Camp — Feb 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&h=250&fit=crop"
+              alt="Civic Tech Summit speakers on stage"
+              title="Civic Tech Summit 2025"
+              class="gallery-img event-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Civic Tech Summit — Jan 2025</p>
+          </td>
+          <td>
+            <img src="https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=400&h=250&fit=crop"
+              alt="Independence Day parade and flag hoisting"
+              title="Independence Day 2025"
+              class="gallery-img event-img"
+              ondblclick="openLightbox(this)">
+            <p class="gallery-caption">Independence Day Parade — Aug 2025</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightboxImg" src="" alt="Enlarged event photo">
+  </div>
+
+  <!-- Event Registration Form -->
+  <div id="registration">
+    <div class="section">
+      <div class="section-header">
+        <h2>Register for an Event</h2>
+        <div class="divider"></div>
+        <p>Complete the form below to secure your spot at any upcoming event.</p>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="e.g. Arunachalam Murugan"
+            required autofocus autocomplete="name">
+          <span class="field-error" id="nameError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="e.g. arun@example.com"
+            required autocomplete="email">
+          <span class="field-error" id="emailError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="req">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="10-digit mobile number"
+            required onblur="validatePhone()">
+          <span class="field-error" id="phoneError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="eventDate">Preferred Date <span class="req">*</span></label>
+          <input type="date" id="eventDate" name="eventDate" required>
+          <span class="field-error" id="dateError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="eventType">Event Type <span class="req">*</span></label>
+          <select id="eventType" name="eventType" required onchange="showEventFee()">
+            <option value="">— Select an Event —</option>
+            <option value="cultural">Heritage Cultural Fest (Free)</option>
+            <option value="workshop">Green Salem Workshop (₹150)</option>
+            <option value="sports">Youth Sports Carnival (₹80)</option>
+            <option value="health">Senior Health Camp (Free)</option>
+            <option value="tech">Civic Tech Summit (₹200)</option>
+            <option value="parade">Independence Day Parade (Free)</option>
+          </select>
+          <div class="fee-display" id="feeDisplay"></div>
+          <span class="field-error" id="eventError"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="participants">Number of Participants</label>
+          <input type="number" id="participants" name="participants" placeholder="1" min="1" max="10" value="1">
+        </div>
+
+        <div class="form-group full">
+          <label for="message">Additional Message</label>
+          <textarea id="message" name="message" rows="4"
+            placeholder="Any special requirements, accessibility needs, or queries..."
+            onkeyup="countChars()"></textarea>
+          <div class="char-counter"><span id="charCount">0</span> / 300 characters</div>
+        </div>
+
+        <div class="form-group full">
+          <button type="button" class="btn btn-primary" onclick="submitRegistration()" style="width:fit-content;">
+            Confirm Registration
+          </button>
+        </div>
+
+        <output class="form-output" id="formOutput"></output>
+      </div>
+    </div>
+  </div>
+
+  <!-- Feedback Section -->
+  <div id="feedback">
+    <div class="section">
+      <div class="section-header">
+        <h2>Event Feedback</h2>
+        <div class="divider"></div>
+        <p>Share your experience. Your feedback helps us improve future events.</p>
+      </div>
+
+      <div class="form-grid" style="max-width:640px;">
+        <div class="form-group">
+          <label for="fbName">Your Name</label>
+          <input type="text" id="fbName" placeholder="Full name">
+        </div>
+
+        <div class="form-group">
+          <label for="fbEvent">Event Attended</label>
+          <select id="fbEvent" onchange="showFeedbackEvent()">
+            <option value="">— Select Event —</option>
+            <option value="Heritage Cultural Fest">Heritage Cultural Fest</option>
+            <option value="Green Salem Workshop">Green Salem Workshop</option>
+            <option value="Youth Sports Carnival">Youth Sports Carnival</option>
+            <option value="Senior Health Camp">Senior Health Camp</option>
+            <option value="Civic Tech Summit">Civic Tech Summit</option>
+          </select>
+          <div class="fee-display" id="fbEventSelected"></div>
+        </div>
+
+        <div class="form-group full">
+          <label for="fbComment">Your Feedback</label>
+          <textarea id="fbComment" rows="4"
+            placeholder="What did you enjoy? Any suggestions for improvement?"
+            onkeyup="countFeedback()"></textarea>
+          <div class="char-counter"><span id="fbCharCount">0</span> / 500 characters</div>
+        </div>
+
+        <div class="form-group full">
+          <button type="button" class="btn btn-primary"
+            onclick="submitFeedback()" style="width:fit-content;">
+            Submit Feedback
+          </button>
+        </div>
+
+        <output class="form-output" id="fbOutput"></output>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Section -->
+  <div id="video-section">
+    <div class="section">
+      <div class="section-header">
+        <h2>Event Promo Video</h2>
+        <div class="divider"></div>
+        <p>Watch highlights from our most recent community celebration.</p>
+      </div>
+      <div class="video-wrapper">
+        <video id="promoVideo" controls preload="metadata"
+          oncanplay="videoReady()"
+          poster="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=720&h=400&fit=crop">
+          <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+          Your browser does not support the HTML5 video element.
+        </video>
+      </div>
+      <p class="video-status" id="videoStatus">Loading video...</p>
+    </div>
+  </div>
+
+  <!-- Geolocation -->
+  <div id="location">
+    <div class="section">
+      <div class="section-header">
+        <h2>Find Nearby Events</h2>
+        <div class="divider"></div>
+        <p>Allow location access to discover events closest to you.</p>
+      </div>
+      <div class="geo-card">
+        <p style="font-size:0.9rem;color:var(--slate);margin-bottom:1.2rem;">
+          Click the button below to detect your current location and find events within your area.
+        </p>
+        <button class="btn btn-primary" onclick="findNearbyEvents()">📍 Find Nearby Events</button>
+        <div class="geo-result" id="geoResult"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preferences (localStorage) -->
+  <div id="preferences">
+    <div class="section">
+      <div class="section-header">
+        <h2>Your Preferences</h2>
+        <div class="divider"></div>
+        <p>We remember your favourite event type so you never miss out.</p>
+      </div>
+      <div class="pref-card">
+        <div class="form-group">
+          <label for="prefEvent">Preferred Event Type</label>
+          <select id="prefEvent" onchange="savePreference()">
+            <option value="">— Select Preference —</option>
+            <option value="cultural">Cultural Events</option>
+            <option value="workshop">Workshops</option>
+            <option value="sports">Sports</option>
+            <option value="health">Health Camps</option>
+            <option value="tech">Technology</option>
+          </select>
+        </div>
+        <p class="pref-status" id="prefStatus"></p>
+        <div style="margin-top:1.2rem;">
+          <button class="btn btn-outline" style="color:var(--terracotta);border-color:var(--terracotta);"
+            onclick="clearPreferences()">
+            Clear Preferences
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <div id="contact">
+    <div class="section">
+      <div class="section-header">
+        <h2>Contact Us</h2>
+        <div class="divider"></div>
+        <p>Reach the Salem City Events Team for enquiries and support.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <h4>Address</h4>
+          <p>Salem Municipal Corporation<br>Shevapet, Salem — 636002<br>Tamil Nadu, India</p>
+        </div>
+        <div class="contact-item">
+          <h4>Phone</h4>
+          <p><a href="tel:+914272250000">0427 - 225 0000</a><br>Mon–Fri, 9 AM – 5 PM</p>
+        </div>
+        <div class="contact-item">
+          <h4>Email</h4>
+          <p><a href="mailto:events@salemcity.gov.in">events@salemcity.gov.in</a></p>
+        </div>
+        <div class="contact-item">
+          <h4>Help & Docs</h4>
+          <p><a href="help.html" target="_blank">Open Help Guide →</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 Salem City Community Portal &nbsp;|&nbsp;
+    Developed for residents by the <a href="#contact">City Events Office</a>
+  </footer>
+
+  <script>
+    // ── PHONE VALIDATION (onblur) ──
+    function validatePhone() {
+      const phone = document.getElementById('phone');
+      const error = document.getElementById('phoneError');
+      const val = phone.value.trim();
+      const valid = /^[6-9]\d{9}$/.test(val);
+
+      if (!val) {
+        phone.className = '';
+        error.textContent = '';
+      } else if (!valid) {
+        phone.classList.add('invalid');
+        phone.classList.remove('valid');
+        error.textContent = 'Enter a valid 10-digit Indian mobile number.';
+      } else {
+        phone.classList.add('valid');
+        phone.classList.remove('invalid');
+        error.textContent = '';
+      }
+    }
+
+    // ── EVENT FEE DISPLAY (onchange) ──
+    const eventFees = {
+      cultural: 'Entry: Free — No registration fee',
+      workshop: 'Entry Fee: ₹150 per person',
+      sports: 'Entry Fee: ₹80 per person',
+      health: 'Entry: Free — Open to all',
+      tech: 'Entry Fee: ₹200 per person',
+      parade: 'Entry: Free — Public event'
+    };
+
+    function showEventFee() {
+      const sel = document.getElementById('eventType').value;
+      const display = document.getElementById('feeDisplay');
+      display.textContent = eventFees[sel] || '';
+
+      // Also save preference on selection
+      if (sel) {
+        sessionStorage.setItem('lastSelectedEvent', sel);
+      }
+    }
+
+    // ── CHARACTER COUNTER (keyboard events) ──
+    function countChars() {
+      const msg = document.getElementById('message').value;
+      const counter = document.getElementById('charCount');
+      counter.textContent = msg.length;
+      if (msg.length > 300) {
+        document.getElementById('message').value = msg.substring(0, 300);
+        counter.textContent = '300';
+      }
+    }
+
+    function countFeedback() {
+      const msg = document.getElementById('fbComment').value;
+      const counter = document.getElementById('fbCharCount');
+      counter.textContent = msg.length;
+      if (msg.length > 500) {
+        document.getElementById('fbComment').value = msg.substring(0, 500);
+        counter.textContent = '500';
+      }
+    }
+
+    // ── FORM SUBMISSION (onclick) ──
+    function submitRegistration() {
+      const name = document.getElementById('fullName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const date = document.getElementById('eventDate').value;
+      const eventType = document.getElementById('eventType').value;
+      const output = document.getElementById('formOutput');
+
+      let valid = true;
+
+      if (!name) {
+        document.getElementById('nameError').textContent = 'Full name is required.';
+        valid = false;
+      } else {
+        document.getElementById('nameError').textContent = '';
+      }
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        document.getElementById('emailError').textContent = 'Enter a valid email address.';
+        valid = false;
+      } else {
+        document.getElementById('emailError').textContent = '';
+      }
+
+      if (!phone || !/^[6-9]\d{9}$/.test(phone)) {
+        document.getElementById('phoneError').textContent = 'Enter a valid 10-digit mobile number.';
+        valid = false;
+      } else {
+        document.getElementById('phoneError').textContent = '';
+      }
+
+      if (!date) {
+        document.getElementById('dateError').textContent = 'Please select an event date.';
+        valid = false;
+      } else {
+        document.getElementById('dateError').textContent = '';
+      }
+
+      if (!eventType) {
+        document.getElementById('eventError').textContent = 'Please select an event type.';
+        valid = false;
+      } else {
+        document.getElementById('eventError').textContent = '';
+      }
+
+      if (!valid) return;
+
+      const eventLabels = {
+        cultural: 'Heritage Cultural Fest',
+        workshop: 'Green Salem Workshop',
+        sports: 'Youth Sports Carnival',
+        health: 'Senior Health Camp',
+        tech: 'Civic Tech Summit',
+        parade: 'Independence Day Parade'
+      };
+
+      output.textContent = `Registration confirmed for ${name}! You have registered for "${eventLabels[eventType]}" on ${date}. A confirmation will be sent to ${email}.`;
+      output.classList.add('active');
+      output.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      // Save to localStorage
+      localStorage.setItem('lastRegisteredEvent', eventType);
+      localStorage.setItem('lastRegistrantName', name);
+    }
+
+    // ── FEEDBACK SUBMIT (onclick) ──
+    function showFeedbackEvent() {
+      const sel = document.getElementById('fbEvent').value;
+      const display = document.getElementById('fbEventSelected');
+      display.textContent = sel ? `Selected: ${sel}` : '';
+    }
+
+    function submitFeedback() {
+      const name = document.getElementById('fbName').value.trim() || 'Anonymous';
+      const event = document.getElementById('fbEvent').value;
+      const comment = document.getElementById('fbComment').value.trim();
+      const output = document.getElementById('fbOutput');
+
+      if (!event) {
+        output.textContent = 'Please select the event you attended.';
+        output.style.background = 'rgba(192,85,58,0.1)';
+        output.style.borderColor = 'rgba(192,85,58,0.3)';
+        output.style.color = 'var(--error)';
+        output.classList.add('active');
+        return;
+      }
+
+      output.textContent = `Thank you, ${name}! Your feedback for "${event}" has been submitted. We appreciate your time.`;
+      output.style.background = 'rgba(90,122,90,0.1)';
+      output.style.borderColor = 'rgba(90,122,90,0.3)';
+      output.style.color = 'var(--success)';
+      output.classList.add('active');
+    }
+
+    // ── IMAGE LIGHTBOX (ondblclick) ──
+    function openLightbox(img) {
+      document.getElementById('lightboxImg').src = img.src;
+      document.getElementById('lightboxImg').alt = img.alt;
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeLightbox();
+    });
+
+    // ── VIDEO READY (oncanplay) ──
+    function videoReady() {
+      document.getElementById('videoStatus').textContent = '✓ Video is ready to play.';
+    }
+
+    // ── GEOLOCATION ──
+    function findNearbyEvents() {
+      const result = document.getElementById('geoResult');
+      result.classList.add('active');
+      result.innerHTML = 'Detecting your location...';
+
+      if (!navigator.geolocation) {
+        result.innerHTML = '<strong>Error:</strong> Geolocation is not supported by your browser.';
+        return;
+      }
+
+      const options = {
+        enableHighAccuracy: true,
+        timeout: 8000,
+        maximumAge: 0
+      };
+
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          const lat = pos.coords.latitude.toFixed(5);
+          const lon = pos.coords.longitude.toFixed(5);
+          const acc = Math.round(pos.coords.accuracy);
+
+          result.innerHTML =
+            '<strong>Location Found!</strong><br>' +
+            'Latitude: ' + lat + '<br>' +
+            'Longitude: ' + lon + '<br>' +
+            'Accuracy: ±' + acc + ' metres<br><br>' +
+            '<strong>Nearest Events:</strong><br>' +
+            '📍 Heritage Cultural Fest — 2.3 km away (Yercaud Road Ground)<br>' +
+            '📍 Green Salem Workshop — 4.1 km away (Town Hall, Swarnapuri)<br>' +
+            '📍 Senior Health Camp — 5.7 km away (Corporation Office)';
+        },
+        function(err) {
+          let msg = '';
+          if (err.code === err.PERMISSION_DENIED) {
+            msg = 'Location access was denied. Please allow location permission in your browser settings.';
+          } else if (err.code === err.POSITION_UNAVAILABLE) {
+            msg = 'Location information is unavailable. Please try again.';
+          } else if (err.code === err.TIMEOUT) {
+            msg = 'Location request timed out. Please check your connection and retry.';
+          } else {
+            msg = 'An unknown error occurred.';
+          }
+          result.innerHTML = '<strong>Error:</strong> ' + msg;
+        },
+        options
+      );
+    }
+
+    // ── LOCALSTORAGE PREFERENCES ──
+    function savePreference() {
+      const sel = document.getElementById('prefEvent').value;
+      const status = document.getElementById('prefStatus');
+
+      if (sel) {
+        localStorage.setItem('preferredEventType', sel);
+        sessionStorage.setItem('sessionPreference', sel);
+        status.textContent = '✓ Preference saved! We will highlight ' + sel + ' events for you.';
+        status.style.color = 'var(--success)';
+      }
+    }
+
+    function clearPreferences() {
+      localStorage.clear();
+      sessionStorage.clear();
+      document.getElementById('prefEvent').value = '';
+      const status = document.getElementById('prefStatus');
+      status.textContent = 'All preferences cleared.';
+      status.style.color = 'var(--terracotta)';
+    }
+
+    function loadPreferences() {
+      const saved = localStorage.getItem('preferredEventType');
+      if (saved) {
+        const sel = document.getElementById('prefEvent');
+        sel.value = saved;
+        const status = document.getElementById('prefStatus');
+        status.textContent = '✓ Preference restored: ' + saved + ' events.';
+        status.style.color = 'var(--success)';
+      }
+    }
+
+    // ── BEFOREUNLOAD WARNING ──
+    let formTouched = false;
+
+    document.getElementById('fullName').addEventListener('input', () => { formTouched = true; });
+    document.getElementById('email').addEventListener('input', () => { formTouched = true; });
+    document.getElementById('phone').addEventListener('input', () => { formTouched = true; });
+    document.getElementById('message').addEventListener('input', () => { formTouched = true; });
+
+    document.getElementById('formOutput').addEventListener('DOMSubtreeModified', function() {
+      if (this.classList.contains('active')) formTouched = false;
+    });
+
+    window.addEventListener('beforeunload', function(e) {
+      if (formTouched) {
+        e.preventDefault();
+        e.returnValue = 'You have unsaved registration details. Are you sure you want to leave?';
+      }
+    });
+
+    // ── INIT ──
+    loadPreferences();
+
+    // Set minimum date for event registration to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('eventDate').setAttribute('min', today);
+  </script>
+
+</body>
+</html>
